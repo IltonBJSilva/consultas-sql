@@ -70,9 +70,70 @@ modify column profissao varchar(20) not null default '';
 alter table pessoas
 change column profissao prof varchar(20);
 
-
+/*Novo nome da tabel em desc*/
+desc gafanhotos;
 
 /*Modificar o nome da tabela inteira*/
 alter table pessoas
 rename to gafanhotos;
 
+
+/*
+NOVO TABELA
+*/
+
+/*Criar uma nova tabela se ele não existir*/
+CREATE TABLE IF NOT EXISTS cursos(
+
+	nome varchar(30) NOT NULL UNIQUE,
+    descricao text,
+    carga int unsigned,
+    totaulas int,
+    ano year default '2016'
+
+) DEFAULT CHARSET = utf8;
+
+describe cursos;
+
+ALTER TABLE cursos
+add column idcursos int first;
+
+ALTER TABLE cursos
+add primary key (idcursos);
+
+/*Apagar a tabela inteira*/
+drop table cursos;
+
+select * from gafanhotos;
+select * from cursos;
+
+insert into cursos value
+('1','HTML4','Curso de HTML5','40','37','2014'),
+('2','Algoritimo','Logica de Programação','20','15','2014'),
+('3','Photoshop','Dica de Photoshop cc','10','8','2014'),
+('4','PGP','Curso de PHP para iniciantes','40','20','2010'),
+('5','Jarva','Introdução a linguagem Java','10','29','2000'),
+('6','MySQL','Banco de dados MySQL','30','15','2016'),
+('7','Word','Curso completo de Word','40','30','2016'),
+('8','Sapateado','Danças Rítmicas','40','30','2018'),
+('9','Cozinha Árabe','Aprenda a fazer Kibe','40','30','2018'),
+('10','YouTuber ','Gerar polêmica e ganhar inscritos','5','2','2018');
+
+
+/*Modificar os erros*/
+/*Alterar uma linha*/
+-- Modifica O NOME DO idcurso 1 de html4 para html5
+update cursos
+set nome = 'HTML5'
+where idcursos = '1';
+
+-- Para alterar os 2 ao mesmo tempo
+UPDATE cursos
+SET nome = 'PHP', ano = '2015'
+where idcursos = '4';
+
+-- limit = limitar quantas linhas podem ser afetadas
+UPDATE cursos
+SET nome = 'Java', carga = '40', ano = '2015'
+WHERE idcursos = '5'
+LIMIT 1;
