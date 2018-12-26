@@ -62,4 +62,17 @@ add column profissao varchar(10) after nome;
 ALTER TABLE pessoas
 add column codigo int FIRST;
 
+/*Modifica o tamanho que cabe em profissão deixa vazio sem ser null*/
+alter table pessoas
+modify column profissao varchar(20) not null default '';
+
+/*Renomear a coluna e colocar todas as constrants e tipos*/
+alter table pessoas
+change column profissao prof varchar(20);
+
+
+
+/*Modificar o nome da tabela inteira*/
+alter table pessoas
+rename to gafanhotos;
 
