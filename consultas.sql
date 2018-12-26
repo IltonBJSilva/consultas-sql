@@ -132,7 +132,7 @@ UPDATE cursos
 SET nome = 'PHP', ano = '2015'
 where idcursos = '4';
 
--- limit = limitar quantas linhas podem ser afetadas
+-- limit = limitar quantas linhas podem ser afetadas no banco
 UPDATE cursos
 SET nome = 'Java', carga = '40', ano = '2015'
 WHERE idcursos = '5'
