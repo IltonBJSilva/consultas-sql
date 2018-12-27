@@ -7,12 +7,13 @@
  
  /*Cria o banco de dados*/
  create database cadastro;
- 
  /*Deleta banco de dados*/
  drop database cadastro;
  
  /*Usa tabela*/
 use cadastro;
+
+drop database teste;
 
 /*Cria tabela*/
 CREATE TABLE pessoas(
@@ -160,6 +161,7 @@ TRUNCATE cursos;
 select * from gafanhotos;
 select * from cursos;
 
+
 -- Abre os dados da tabela
 desc gafanhotos;
 desc cursos;
@@ -168,3 +170,80 @@ desc cursos;
 -- Desativa os updates seguros
 SET
 SQL_SAFE_UPDATES = 0;
+
+-- deles a baixo aula 11 
+
+select * from cursos
+-- Ordenar pelo nome
+order by nome;
+
+-- faz a ordenaçao inverso ou seja de baixo para cima descedente
+select * from cursos
+order by nome desc;
+
+-- ascedente
+select * from cursos
+order by nome asc;
+
+-- describe
+desc cursos;
+
+-- order quer que aparece pro usuario
+select nome,carga, ano from cursos
+order by nome;
+
+-- order quer que aparece pro usuario
+select nome,carga, ano from cursos
+order by ano;
+
+-- ordernar de 2 forma
+select nome,carga, ano from cursos
+order by ano, nome;
+
+/*
+Where = uma condição de que so aparece o do ano de 2016 ou outro adicionado tanto quanto nome ou totaulas
+select * from cursos = selecione a tabela cursos exiba
+ordery by = ordenar pelo nome
+*/
+select * from cursos
+where ano = '2016'
+order by nome;
+
+
+/*Seleciona apenas o nome dos cursos de 2016*/
+select nome,descricao,carga from cursos
+where ano = '2016'
+order by nome;
+
+/*Seleciona de acordo com a condicao para mostrar na tela*/
+select ano,nome,descricao,carga from cursos
+where ano <> '2016'
+order by ano, nome;
+
+/*Entre um e outro*/
+select ano,nome,descricao,carga from cursos
+where ano between 2015 and 2017
+order by ano desc, nome;
+
+/*Entre um e outro de 2014 ate 2016*/
+select ano,nome,descricao,carga from cursos
+where ano between 2014 and 2016
+order by ano desc, nome;
+
+/*
+Mostra apenas os escolhidos
+que no caso foi ano
+então mostra apenas os de 2014 e 2016 e 2020
+*/
+select nome, descricao, ano from cursos
+where ano in (2014, 2016, 2020)
+order by ano;
+
+/*
+Mostra todos os cursos onde
+a carga de aula e maior que 35 
+e o totaulas menor que 30
+*/
+select nome,carga,totaulas from cursos
+where carga > 35 and totaulas < 30
+order by nome,totaulas;
