@@ -134,6 +134,37 @@ where idcursos = '4';
 
 -- limit = limitar quantas linhas podem ser afetadas no banco
 UPDATE cursos
-SET nome = 'Java', carga = '40', ano = '2015'
+SET nome = 'Java',ano = '2015', carga = '40'
 WHERE idcursos = '5'
 LIMIT 1;
+
+-- altera o ano do curso todo aqueles que tem 2018 do ano
+UPDATE cursos
+SET ano = '2018', carga = '26'
+WHERE ano = '2050';
+
+-- Vai deletar aqueles com idcurso = 8
+DELETE FROM cursos
+WHERE idcursos = '8';
+
+-- Vai deletar varias linhas
+DELETE FROM cursos
+WHERE ano = '2018' 	
+limit 2;
+
+-- Apagar uma tabela inteira
+
+TRUNCATE cursos;
+
+-- abre as tabelas com registro
+select * from gafanhotos;
+select * from cursos;
+
+-- Abre os dados da tabela
+desc gafanhotos;
+desc cursos;
+
+
+-- Desativa os updates seguros
+SET
+SQL_SAFE_UPDATES = 0;
