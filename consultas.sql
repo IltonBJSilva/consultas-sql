@@ -308,7 +308,20 @@ where nome like 'ph%p_';
 select * from gafanhotos
 where nome like '%silva_%';
 
-select * from gafanhotos;
+select * from cursos;
 
 -- Distinct vai chamar um de cada mesmo que se repita
 select distinct carga from cursos;
+
+select distinct nome from gafanhotos;
+
+select distinct nacionalidade from gafanhotos
+order by nacionalidade;
+
+select distinct profissao from gafanhotos;
+
+select distinct carga from cursos
+order by carga;
+
+-- Para a saber a quantidade de cursos cadastrados
+select count(*) from cursos where carga > 40;
