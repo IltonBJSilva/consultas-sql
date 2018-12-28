@@ -343,3 +343,12 @@ select min(carga) from cursos;
 
 select * from cursos where carga > 50;
 
+select * from cursos;
+
+-- soma oque foi pedido e mostra o total 
+select sum(totaulas) from cursos;
+select sum(carga) from cursos;
+
+-- enquanto for tal ano soma o total de aulas ou carga nesse ano
+select sum(totaulas) from cursos where ano="2015";
+select sum(carga) from cursos where ano="2019";
