@@ -325,3 +325,21 @@ order by carga;
 
 -- Para a saber a quantidade de cursos cadastrados
 select count(*) from cursos where carga > 40;
+
+-- Para mostrar a maior de alguma cois usa max() e a menor usa min()
+select max(carga) from cursos;
+select min(carga) from cursos;
+
+-- Para mostrar a maior de alguma cois usa max() e a menor usa min() enquanto o ano for tal
+select max(carga) from cursos where ano = '2015';
+select min(carga) from cursos where ano = '2016';
+
+select max(totaulas) from cursos where ano ='2016';
+select min(totaulas) from cursos where ano ='2015';
+
+-- Para mostrar a maior de alguma cois usa max() e a menor usa min() e o nome antes
+select nome, max(carga) from cursos;
+select min(carga) from cursos;
+
+select * from cursos where carga > 50;
+
