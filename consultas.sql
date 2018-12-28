@@ -247,3 +247,68 @@ e o totaulas menor que 30
 select nome,carga,totaulas from cursos
 where carga > 35 and totaulas < 30
 order by nome,totaulas;
+
+use cadastro;
+
+/*
+Mostra todos os cursos onde
+a carga de aula e maior que 35 
+e o totaulas menor que 30 usando or
+que e diferente do and, o or e um ou outro
+se o carga foi maior que 35 e maior que 30
+vai pois uma das condição foi true
+*/
+select nome,carga,totaulas from cursos
+where carga > 35 or totaulas < 30
+order by nome,totaulas;
+
+--  Todos os cursos que terminam com A
+select * from cursos
+where nome like '%A';
+
+-- todos os cursos que começam com A
+select * from cursos
+where nome like 'A%';
+
+-- todos que tem A no inicio ou A no fim
+select * from cursos
+where nome like '%A%';
+
+
+-- todos que não tem A no inicio
+select * from cursos
+where nome not like 'A%';
+
+-- todos que não tem A no fim
+select * from cursos
+where nome not like '%A';
+
+-- todos que não tem A no fim e nem A no inicio
+select * from cursos
+where nome not like '%A%';
+
+select * from cursos;
+update cursos set nome = 'PáOO' where idcurso = '9';
+
+ select * from cursos;
+ 
+-- Pega aqueles que começam com ph e terminam com p
+select * from cursos
+where nome like 'ph%p';
+
+-- Pega aqueles que começam com ph e terminam com p e mas um no final
+select * from cursos
+where nome like 'ph%p%';
+
+-- Pega aqueles que começam com ph e terminam com p e mas um no final
+select * from cursos
+where nome like 'ph%p_';
+
+
+select * from gafanhotos
+where nome like '%silva_%';
+
+select * from gafanhotos;
+
+-- Distinct vai chamar um de cada mesmo que se repita
+select distinct carga from cursos;
