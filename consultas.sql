@@ -360,3 +360,11 @@ select AVG(carga) from cursos;
 -- tira a media com condição
 select avg(totaulas) from cursos where ano = '2016';
 select avg(carga) from cursos where ano = '2016';
+
+-- agrupa todos o resultado visual e parecido mas não igual ao distinc
+select nome,carga from cursos
+group by carga;
+
+-- agrupa todos o resultado visual e parecido mas não igual ao distinc
+select carga,COUNT(*) from cursos
+group by carga;
