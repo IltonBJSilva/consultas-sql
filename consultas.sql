@@ -351,4 +351,12 @@ select sum(carga) from cursos;
 
 -- enquanto for tal ano soma o total de aulas ou carga nesse ano
 select sum(totaulas) from cursos where ano="2015";
-select sum(carga) from cursos where ano="2019";
+select sum(carga) from cursos where ano='2019';
+
+-- tira a media
+select AVG(totaulas) from cursos;
+select AVG(carga) from cursos;
+
+-- tira a media com condição
+select avg(totaulas) from cursos where ano = '2016';
+select avg(carga) from cursos where ano = '2016';
