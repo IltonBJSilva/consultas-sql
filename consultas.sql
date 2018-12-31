@@ -368,3 +368,112 @@ group by carga;
 -- agrupa todos o resultado visual e parecido mas não igual ao distinc
 select carga,COUNT(*) from cursos
 group by carga;
+
+
+/*
+Exercicio 1 do site https://www.sqlteaching.com/
+*/
+select * from family_members;
+
+/* 
+Exercicio 2 do site https://www.sqlteaching.com/
+*/
+SELECT name,species FROM family_members;
+
+/*
+Exercicio 3 do site https://www.sqlteaching.com/
+*/
+select id,name,gender,species,num_books_read
+ from family_members where species='dog';
+ 
+ /*
+ Exercicio 4 do site https://www.sqlteaching.com/
+ */
+ select * from family_members where  num_books_read > 190
+
+ /*
+  Exercicio 5 do site https://www.sqlteaching.com/
+ */
+ select * from family_members where  num_books_read >= 180
+ 
+ /*
+   Exercicio 6 do site https://www.sqlteaching.com/
+ */
+ select id,name,gender,species,height_cm
+ from friends_of_pickles where  height_cm < 45 AND species = 'dog';
+
+/*
+   Exercicio 7 do site https://www.sqlteaching.com/
+*/
+SELECT * FROM friends_of_pickles WHERE height_cm < 45 OR species = 'dog';
+
+/*
+   Exercicio 8 do site https://www.sqlteaching.com/
+*/
+SELECT * FROM friends_of_pickles WHERE species NOT IN ('cat', 'dog');
+
+/*
+   Exercicio 9 do site https://www.sqlteaching.com/
+*/
+select distinct species from friends_of_pickles where height_cm > 50;
+
+/*
+   Exercicio 10 do site https://www.sqlteaching.com/
+*/
+select * from friends_of_pickles 
+order by height_cm desc;
+
+/*
+   Exercicio 11 do site https://www.sqlteaching.com/
+*/
+select id, name,gender,species,max (height_cm) height_cm from friends_of_pickles
+order by height_cm 
+limit 1;
+
+/*
+   Exercicio 12 do site https://www.sqlteaching.com/
+*/
+select count(*) from friends_of_pickles;
+
+/*
+   Exercicio 13 do site https://www.sqlteaching.com/
+*/
+select count(*) from friends_of_pickles WHERE species = 'dog'
+
+/*
+   Exercicio 14 do site https://www.sqlteaching.com/
+*/
+select sum(num_books_read) from family_members;
+
+/*
+   Exercicio 15 do site https://www.sqlteaching.com/
+*/
+select avg(num_books_read) from family_members;
+
+/*
+   Exercicio 16 do site https://www.sqlteaching.com/
+*/
+select max(num_books_read) from family_members;
+
+/*
+   Exercicio 17 do site https://www.sqlteaching.com/
+*/
+select max(height_cm),species from friends_of_pickles 
+group by species;
+
+/*
+   Exercicio 18 do site https://www.sqlteaching.com/
+*/
+select * from family_members  where num_books_read = (select max(num_books_read) from family_members);
+
+/*
+   Exercicio 19 do site https://www.sqlteaching.com/
+*/
+select * from family_members where favorite_book not like 'null';
+
+/*
+   Exercicio 20 do site https://www.sqlteaching.com/
+*/
+select * from celebs_born 
+where birthdate > '1980-01-9';
+
