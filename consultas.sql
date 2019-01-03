@@ -488,8 +488,95 @@ where birthdate > '1980-01-9';
 
 -- FIM
 
+desc gafanhotos;
 
+alter table gafanhotos add column cursopreferido int;
 
+/*LIGAR O CURSOPREFERIDO A IDCURSO COMO CHAVE ESTRANGEIRA*/
+alter table gafanhotos 
+add foreign key(cursopreferido)
+references cursos(idcurso);
+
+select * from gafanhotos;
+select * from cursos;
+
+/*vai dar um update onde o aluno o aluno 6 vai preferir o curso 1*/
+update gafanhotos set cursopreferido = '6' where id = '1';
+
+delete from cursos where idcurso= '31';
+
+select nome,cursopreferido from gafanhotos
+where cursopreferido <= '6';
+
+select nome,ano from cursos;
+
+/*
+Vai juntar cada gafanhoto com todos os cursos não e isso que eu quero pra da certo use on
+*/
+select gafanhotos.nome, gafanhotos.cursopreferido, cursos.nome, cursos.ano from gafanhotos join cursos;
+
+/*RELACIONAR AS TABELAS ONDE MOSTRA QUEM PREFERE QUAL CURSO OU QUE*/
+select gafanhotos.nome, gafanhotos.cursopreferido, cursos.nome, cursos.ano 
+from gafanhotos join cursos
+on cursos.idcurso = gafanhotos.cursopreferido;
+
+select * from gafanhotos;
+
+/*Relacionar tbm com apelidos
+g = gafanhotos
+c = cursos
+*/
+select g.nome, g.cursopreferido, c.nome, c.ano 
+from gafanhotos as g inner join cursos as c
+on c.idcurso = g.cursopreferido;
+
+/*
+Ordenado a partir de nomes de gafanhotos
+*/
+select g.nome, g.cursopreferido, c.nome, c.ano 
+from gafanhotos as g right outer join cursos as c
+on c.idcurso = g.cursopreferido
+order by g.nome;
+
+/*
+Criar um terceira tabela para relacionar
+e apontar para onde deseja
+*/
+CREATE TABLE gafanhotos_assiste_curso(
+
+id int NOT NULL AUTO_INCREMENT,
+data date,
+idgafanhoto int,
+idcurso int,
+PRIMARY KEY(id),
+/*Para marca as chaves estrangeiras de gafanhotos*/
+FOREIGN KEY (idgafanhoto) REFERENCES gafanhotos(id),
+FOREIGN KEY (idcurso) REFERENCES cursos(idcurso)
+
+)default charset = utf8;
+/*
+Inserir os registros na tabela gafanhoto_assiste_curso
+*/
+insert into gafanhotos_assiste_curso values
+(default,'2014-03-01', '1','2');
+
+/*Assim geraria um bagunça danada*/
+select * from gafanhotos g 
+join gafanhotos_assiste_curso a;
+
+/*
+Mostra os gafanhotos cadastrado em gafanhotos_assiste_curso
+e tbm os dados de gafanhotos_assiste_curso e  gafanhotos
+*/
+select * from gafanhotos g 
+join gafanhotos_assiste_curso a
+on g.id = a.idgafanhoto;
+/*
+Filtrando mostrando apenas os dados dos gafanhotos seria assim
+*/
+select g.id,g.nome, a.idgafanhoto from gafanhotos g 
+join gafanhotos_assiste_curso a
+on g.id = a.idgafanhoto;
 
 
 
