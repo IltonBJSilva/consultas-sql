@@ -369,111 +369,133 @@ group by carga;
 select carga,COUNT(*) from cursos
 group by carga;
 
+select cursos.nome, gafanhoto.nome from cursos,gafanhotos;
 
 /*
-Exercicio 1 do site https://www.sqlteaching.com/
+Exercicios do 1 ao 20 do site https://www.sqlteaching.com/
+*/
+
+/*
+instrução select
 */
 select * from family_members;
 
-/* 
-Exercicio 2 do site https://www.sqlteaching.com/
+/*
+instrução select procur
 */
 SELECT name,species FROM family_members;
 
+
 /*
-Exercicio 3 do site https://www.sqlteaching.com/
+procura tabela inteira onde species = a dog
 */
 select id,name,gender,species,num_books_read
  from family_members where species='dog';
  
  /*
- Exercicio 4 do site https://www.sqlteaching.com/
+ procura tabela com condição where
  */
- select * from family_members where  num_books_read > 190
+ select * from family_members where  num_books_read > 190;
 
  /*
-  Exercicio 5 do site https://www.sqlteaching.com/
+  procura tabela com condição where
+
  */
- select * from family_members where  num_books_read >= 180
+ select * from family_members where  num_books_read >= 180;
  
  /*
-   Exercicio 6 do site https://www.sqlteaching.com/
+  procura tabela com tabela com duas condição = true
  */
  select id,name,gender,species,height_cm
  from friends_of_pickles where  height_cm < 45 AND species = 'dog';
 
 /*
-   Exercicio 7 do site https://www.sqlteaching.com/
+  procura tabela com uma ou outra condição
+
 */
 SELECT * FROM friends_of_pickles WHERE height_cm < 45 OR species = 'dog';
 
 /*
-   Exercicio 8 do site https://www.sqlteaching.com/
+  procura tabela com duas condição diferente de cat ou dog
+
 */
 SELECT * FROM friends_of_pickles WHERE species NOT IN ('cat', 'dog');
 
 /*
-   Exercicio 9 do site https://www.sqlteaching.com/
+  procura tabela com distinct e condição
 */
 select distinct species from friends_of_pickles where height_cm > 50;
 
 /*
-   Exercicio 10 do site https://www.sqlteaching.com/
+ ordenado de acordo com o tamnho em orde decresente
 */
 select * from friends_of_pickles 
 order by height_cm desc;
 
 /*
-   Exercicio 11 do site https://www.sqlteaching.com/
+Mostra oque se pede e o maximo de tamanho ordenado pelo tamanho afetando uma unica linha
 */
 select id, name,gender,species,max (height_cm) height_cm from friends_of_pickles
 order by height_cm 
 limit 1;
 
 /*
-   Exercicio 12 do site https://www.sqlteaching.com/
+  conta a quantidade
 */
 select count(*) from friends_of_pickles;
 
 /*
-   Exercicio 13 do site https://www.sqlteaching.com/
+   conta a quantidade com condição
 */
 select count(*) from friends_of_pickles WHERE species = 'dog'
 
 /*
-   Exercicio 14 do site https://www.sqlteaching.com/
+   soma a quantidade de livros lido
 */
 select sum(num_books_read) from family_members;
 
 /*
-   Exercicio 15 do site https://www.sqlteaching.com/
+   calcula media de livros lidos
 */
 select avg(num_books_read) from family_members;
 
 /*
-   Exercicio 16 do site https://www.sqlteaching.com/
+  o maximo de livro lido
 */
 select max(num_books_read) from family_members;
 
 /*
-   Exercicio 17 do site https://www.sqlteaching.com/
+  o maximo de livro lido e quem leu agrupado
 */
 select max(height_cm),species from friends_of_pickles 
 group by species;
 
 /*
-   Exercicio 18 do site https://www.sqlteaching.com/
+   comando select em condição
 */
 select * from family_members  where num_books_read = (select max(num_books_read) from family_members);
 
 /*
-   Exercicio 19 do site https://www.sqlteaching.com/
+   condição onde não pode ser null
 */
 select * from family_members where favorite_book not like 'null';
 
 /*
-   Exercicio 20 do site https://www.sqlteaching.com/
+  condição com simbolo de maior maior 
 */
 select * from celebs_born 
 where birthdate > '1980-01-9';
+
+-- FIM
+
+
+
+
+
+
+
+
+
+
+
 
