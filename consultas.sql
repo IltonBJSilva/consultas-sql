@@ -574,12 +574,117 @@ on g.id = a.idgafanhoto;
 /*
 Filtrando mostrando apenas os dados dos gafanhotos seria assim
 */
-select g.id,g.nome, a.idgafanhoto from gafanhotos g 
+select g.id,g.nome, a.idgafanhoto,idcurso from gafanhotos g 
 join gafanhotos_assiste_curso a
 on g.id = a.idgafanhoto;
 
+select g.nome,idcurso from gafanhotos g 
+join gafanhotos_assiste_curso a
+on g.id = a.idgafanhoto
+order by g.nome;
 
+/*
+Para colocar o nome do curso puxando dados de 3 tabelas
+usando 3 join 
+*/
+select g.nome, c.nome from gafanhotos g 
+join gafanhotos_assiste_curso a
+on g.id = a.idgafanhoto
+join cursos c
+on a.idcurso = c.idcurso
+order by g.nome;
 
+/*
+
+Exercicios do 21 ao 31 do site https://www.sqlteaching.com/
+*/
+
+/*
+Lesson 21: Inner joins
+*/
+select character.name,character_actor.actor_name
+ from character join character_actor
+on character.id = character_actor.character_id;
+
+/*
+Lesson 22: Multiple joins
+*/
+select c.name,a.name from character c 
+join character_actor ca 
+on c.id = ca.id
+join actor a
+on a.id = actor_id;
+
+/*
+Lesson 23: Joins with WHERE
+*/
+select character.name,tv_show.name from character join character_tv_show
+on character.id =character_tv_show.character_id
+join tv_show
+on character_tv_show.tv_show_id = tv_show_id 
+where character.name = 'Doogie Howser' and tv_show.name = 'Doogie Howser, M.D.' 
+and character.name != 'Willow Rosenberg' and  tv_show.name != 'How I Met Your Mother';
+
+/*
+Lesson 24: Left joins
+*/
+select c.name, a.name from character c left join character_actor ca
+on c.id = ca.character_id
+left join actor a
+on a.id = ca.actor_id;
+
+/*
+Lesson 25: Table alias
+*/
+select c.name, a.name 
+from character as c 
+left join character_actor AS ca
+on c.id = ca.character_id
+left join actor AS a
+on a.id = ca.actor_id;
+
+/*
+Lesson 26: Column alias
+*/
+select c.name AS character,a.name AS actor
+from character c 
+left join character_actor ca
+on c.id = ca.character_id
+left join actor a
+on a.id = ca.actor_id;
+
+/*
+Lesson 27: Self joins
+*/
+select epy.name AS employee_name,bos.name AS boss_name
+from employees AS epy join employees AS bos 
+on epy.boss_id = bos.id;
+
+/*
+Lesson 28: LIKE
+*/
+SELECT * FROM robots 
+WHERE name LIKE "%200%";
+
+/*
+Lesson 29: CASE
+*/
+SELECT *, CASE WHEN species = 'human' THEN "talk"
+WHEN species = 'cat'
+THEN 'meow'
+ELSE 'bark' END AS sound
+FROM friends_of_pickles;
+
+/*
+Lesson 30: SUBSTR
+*/
+SELECT * FROM robots 
+WHERE SUBSTR(location, -4,14) like '%NY';
+
+/*
+Lesson 31: COALESCE
+*/
+SELECT name, COALESCE(tank,gun,sword) as weapon FROM fighters; 
 
 
 
